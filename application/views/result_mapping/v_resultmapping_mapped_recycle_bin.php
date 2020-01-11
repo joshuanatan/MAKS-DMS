@@ -25,7 +25,7 @@
                 <th style = "width:5%">#</th>
                 <th>Request Intent</th>
                 <th>Result Type</th>
-                <th>Status Intent</th>
+                <th>Last Modified</th>
                 <th>Action</th>
             </thead>
             <tbody>
@@ -42,13 +42,7 @@
                             <?php endfor;?>
                         </select>
                     </td>
-                    <td>
-                        <?php if($result_list[$a]["status_aktif_result_type_mapping"] == 1):?>
-                        <button type = "button" class = "btn btn-primary btn-sm col-lg-12">ACTIVE</button>
-                        <?php else:?>
-                        <button type = "button" class = "btn btn-danger btn-sm col-lg-12">NOT ACTIVE</button>
-                        <?php endif;?>
-                    </td>
+                    <td><?php echo $result_mapping[$a]["tgl_result_type_mapping_last_modified"];?></td>
                     <td>
                         <a href = "<?php echo base_url();?>resultmapping/activate_mapped/<?php echo $result_list[$a]["id_submit_result_type_mapping"];?>" class = "btn btn-primary btn-sm col-lg-12">ACTIVATE</a>
                     </td>
@@ -56,6 +50,6 @@
                 <?php endfor;?>
             </tbody>
         </table>
-        <a href = "<?php echo base_url();?>resultmapping/show_mapped_result" class = "btn btn-primary btn-sm">BACK</a>
+        <a href = "<?php echo base_url();?>resultmapping" class = "btn btn-primary btn-sm">BACK</a>
     </form>
 </div>

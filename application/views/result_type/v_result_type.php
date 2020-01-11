@@ -27,6 +27,7 @@
         <table class = "table table-striped table-hover table-bordered" id = "table_driver" data-plugin = "dataTable">
             <thead>
                 <th>Result Type</th>
+                <th>Last Modified</th>
                 <th style = "width:15%">Status Result Type</th>
                 <th style = "width:15%">Action</th>
             </thead>
@@ -34,6 +35,7 @@
                 <?php for($a = 0; $a<count($result_type); $a++):?>
                 <tr>
                     <td><?php echo $result_type[$a]["result_type"];?></td>
+                    <td><?php echo $result_type[$a]["tgl_result_type_last_modified"];?></td>
                     <td>
                         <?php if($result_type[$a]["status_aktif_result_type"] == 1):?>
                             <button type = "button" class = "btn btn-primary btn-sm col-lg-12">ACTIVE</button>

@@ -1,8 +1,8 @@
 <?php
+date_default_timezone_set("Asia/Bangkok");
 class User extends CI_Controller{
     public function __construct(){
         parent::__construct();
-        
     }
     public function index(){
         $this->check_session();
@@ -10,7 +10,7 @@ class User extends CI_Controller{
             "statuS_aktif_user < " => 2 
         );
         $field = array(
-            "id_submit_user","nama_user","email_user","status_aktif_user","tgl_user_add","tgl_user_edit","tgl_user_delete"
+            "id_submit_user","nama_user","email_user","status_aktif_user","tgl_user_last_modified",
         );
         $result = selectRow("tbl_user",$where,$field);
         $data["user"] = $result->result_array();
@@ -30,7 +30,7 @@ class User extends CI_Controller{
             "statuS_aktif_user" => 2
         );
         $field = array(
-            "id_submit_user","nama_user","email_user","status_aktif_user","tgl_user_add","tgl_user_edit","tgl_user_delete"
+            "id_submit_user","nama_user","email_user","status_aktif_user","tgl_user_last_modified"
         );
         $result = selectRow("tbl_user",$where,$field);
         $data["user"] = $result->result_array();
@@ -68,12 +68,8 @@ class User extends CI_Controller{
                 "nama_user" => $this->input->post("nama_user") ,
                 "password_user" => md5($this->input->post("password_user")),
                 "status_aktif_user" => 1,
-                "tgl_user_add" => date("Y-m-d H:i:s"),
-                "tgl_user_edit" => "0000-00-00 00:00:00",
-                "tgl_user_delete" => "0000-00-00 00:00:00",
-                "id_user_user_add" => $this->session->id_user,
-                "id_user_user_edit" => 0,
-                "id_user_user_delete" => 0,
+                "tgl_user_last_modified" => date("Y-m-d H:i:s"),
+                "id_user_user_last_modified" => $this->session->id_user,
                 "email_user" => $this->input->post("email_user")
             );
             insertRow("tbl_user",$data);
@@ -115,8 +111,8 @@ class User extends CI_Controller{
             if($result->email_user == $this->input->post("email_user")){
                 $data = array(
                     "nama_user" => $this->input->post("nama_user"),
-                    "tgl_user_edit" => date("Y-m-d H:i:s"),
-                    "id_user_user_edit" => $this->session->id_user,
+                    "tgl_user_last_modified" => date("Y-m-d H:i:s"),
+                    "id_user_user_last_modified" => $this->session->id_user,
                     "email_user" => $this->input->post("email_user")
                 );
                 updateRow("tbl_user",$data,$where);
@@ -142,8 +138,8 @@ class User extends CI_Controller{
                     );
                     $data = array(
                         "nama_user" => $this->input->post("nama_user"),
-                        "tgl_user_edit" => date("Y-m-d H:i:s"),
-                        "id_user_user_edit" => $this->session->id_user,
+                        "tgl_user_last_modified" => date("Y-m-d H:i:s"),
+                        "id_user_user_last_modified" => $this->session->id_user,
                         "email_user" => $this->input->post("email_user")
                     );
                     updateRow("tbl_user",$data,$where);
@@ -177,8 +173,8 @@ class User extends CI_Controller{
             );
             $data = array(
                 "password_user" => md5($this->input->post("password_user")),
-                "tgl_user_edit" => date("Y-m-d H:i:s"),
-                "id_user_user_edit" => $this->session->id_user,
+                "tgl_user_last_modified" => date("Y-m-d H:i:s"),
+                "id_user_user_last_modified" => $this->session->id_user,
             );
             updateRow("tbl_user",$data,$where);
             $this->session->set_flashdata("status","success");
@@ -198,7 +194,7 @@ class User extends CI_Controller{
         );
         $data = array(
             "status_aktif_user" => 0,
-            "tgl_user_delete" => date("Y-m-d H:i:s"),
+            "tgl_user_last_modified" => date("Y-m-d H:i:s"),
         );
         updateRow("tbl_user",$data,$where);
     
@@ -213,7 +209,7 @@ class User extends CI_Controller{
         );
         $data = array(
             "status_aktif_user" => 2,
-            "tgl_user_delete" => date("Y-m-d H:i:s"),
+            "tgl_user_last_modified" => date("Y-m-d H:i:s"),
         );
         updateRow("tbl_user",$data,$where);
     
@@ -228,7 +224,7 @@ class User extends CI_Controller{
         );
         $data = array(
             "status_aktif_user" => 1,
-            "tgl_user_delete" => date("Y-m-d H:i:s"),
+            "tgl_user_last_modified" => date("Y-m-d H:i:s"),
         );
         updateRow("tbl_user",$data,$where);
     

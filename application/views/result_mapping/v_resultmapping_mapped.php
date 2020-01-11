@@ -20,7 +20,6 @@
 <?php endif;?>
 <div class="page-body">
     <button type = "button" class = "btn btn-primary btn-sm" data-toggle = "modal" data-target = "#tambahResultMapping">+ ADD NEW MAPPING</button>
-    <a href = "<?php echo base_url();?>resultmapping/new_dataset" class = "btn btn-primary btn-sm">NEW DATASET KEY</a>
     <a href = "<?php echo base_url();?>resultmapping/mapped_result_recycle_bin" class = "btn btn-light btn-sm"><i class = "icon wb-trash"></i></a>
     <br/><br/>
     <form action = "<?php echo base_url();?>resultmapping/update" method = "POST">
@@ -29,6 +28,7 @@
                 <th style = "width:5%">#</th>
                 <th>Dataset Key</th>
                 <th>Result Type</th>
+                <th>Last Modified</th>
                 <th style = "width:10%">Status Intent</th>
                 <th style = "width:10%">Action</th>
             </thead>
@@ -50,6 +50,7 @@
                             <?php endfor;?>
                         </select>
                     </td>
+                    <td><?php echo $result_mapping[$a]["tgl_result_type_mapping_last_modified"];?></td>
                     <td>
                         <?php if($result_mapping[$a]["status_aktif_result_type_mapping"] == 1):?>
                         <button type = "button" class = "btn btn-primary btn-sm col-lg-12">ACTIVE</button>

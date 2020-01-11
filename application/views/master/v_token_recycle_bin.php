@@ -22,9 +22,10 @@
     <table class = "table table-striped table-hover table-bordered" id = "table_driver" data-plugin = "dataTable">
         <thead>
             <th style = "width:5%">#</th>
-            <th style = "width:30%">Nama Client</th>
-            <th>Token token</th>
-            <th style = "width:5%">Action</th>
+            <th>Nama Client</th>
+            <th>Token</th>
+            <th>Last Modified</th>
+            <th style = "width:15%">Action</th>
         </thead>
         <tbody>
             <?php for($a = 0; $a<count($token); $a++):?>
@@ -32,6 +33,7 @@
                 <td><?php echo $a+1;?></td>
                 <td><?php echo $token[$a]["nama_client"];?></td>
                 <td><?php echo $token[$a]["token"];?></td>
+                <td><?php echo $token[$a]["tgl_token_last_modified"];?></td>
                 <td>
                     <a href = "<?php echo base_url();?>token/activate/<?php echo $token[$a]["id_submit_token"];?>" class = "btn btn-primary btn-sm col-lg-12">ACTIVATE TOKEN</a>
                 </td>

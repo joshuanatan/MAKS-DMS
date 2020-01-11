@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("Asia/Bangkok");
 class Token extends CI_Controller{
     public function __construct(){
         parent::__construct();
@@ -11,7 +12,7 @@ class Token extends CI_Controller{
             "status_aktif_token < " => 2
         );
         $field = array(
-            "token","nama_client","status_aktif_token","tgl_token_add","tgl_token_edit","id_submit_token"
+            "token","nama_client","status_aktif_token","tgl_token_last_modified","id_submit_token"
         );
         $result = selectRow("tbl_token",$where,$field);
         $data["token"] = $result->result_array();
@@ -32,7 +33,7 @@ class Token extends CI_Controller{
             "status_aktif_token" => 2
         );
         $field = array(
-            "token","nama_client","status_aktif_token","tgl_token_add","tgl_token_edit","id_submit_token"
+            "token","nama_client","status_aktif_token","tgl_token_last_modified","id_submit_token"
         );
         $result = selectRow("tbl_token",$where,$field);
         $data["token"] = $result->result_array();
@@ -79,12 +80,8 @@ class Token extends CI_Controller{
                 "token" => $this->input->post("token"),
                 "nama_client" => $this->input->post("nama_client"),
                 "status_aktif_token" => 1,
-                "tgl_token_add" => date("Y-m-d H:i:s"),
-                "tgl_token_edit" => "0000-00-00 00:00:00",
-                "tgl_token_delete" => "0000-00-00 00:00:00",
-                "id_user_token_add" => $this->session->id_user,
-                "id_user_token_edit" => 0,
-                "id_user_token_delete" => 0,
+                "tgl_token_last_modified" => date("Y-m-d H:i:s"),
+                "id_user_token_last_modified" => $this->session->id_user,
             );
             insertRow("tbl_token",$data);
             $this->session->set_flashdata("status","success");
@@ -106,7 +103,7 @@ class Token extends CI_Controller{
         );
         $data = array(
             "status_aktif_token" => 0,
-            "tgl_token_delete" => date("Y-m-d H:i:s"),
+            "tgl_token_last_modified" => date("Y-m-d H:i:s"),
         );
         updateRow("tbl_token",$data,$where);
         $this->session->set_flashdata("status","success");
@@ -120,7 +117,7 @@ class Token extends CI_Controller{
         );
         $data = array(
             "status_aktif_token" => 2,
-            "tgl_token_delete" => date("Y-m-d H:i:s"),
+            "tgl_token_last_modified" => date("Y-m-d H:i:s"),
         );
         updateRow("tbl_token",$data,$where);
         $this->session->set_flashdata("status","success");
@@ -134,7 +131,7 @@ class Token extends CI_Controller{
         );
         $data = array(
             "status_aktif_token" => 1,
-            "tgl_token_delete" => date("Y-m-d H:i:s"),
+            "tgl_token_last_modified" => date("Y-m-d H:i:s"),
         );
         updateRow("tbl_token",$data,$where);
         $this->session->set_flashdata("status","success");
@@ -163,8 +160,8 @@ class Token extends CI_Controller{
             $data = array(
                 "token" => $this->input->post("token"),
                 "nama_client" => $this->input->post("nama_client"),
-                "tgl_token_edit" => date("Y-m-d H:i:s"),
-                "id_user_token_edit" => $this->session->id_user,
+                "tgl_token_last_modified" => date("Y-m-d H:i:s"),
+                "id_user_token_last_modified" => $this->session->id_user,
             );
             updateRow("tbl_token",$data,$where);
             $this->session->set_flashdata("status","success");

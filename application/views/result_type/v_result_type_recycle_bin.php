@@ -24,12 +24,14 @@
         <table class = "table table-striped table-hover table-bordered" id = "table_driver" data-plugin = "dataTable">
             <thead>
                 <th>Result Type</th>
+                <th>Last Modified</th>
                 <th style = "width:15%">Action</th>
             </thead>
             <tbody>
                 <?php for($a = 0; $a<count($result_type); $a++):?>
                 <tr>
                     <td><?php echo $result_type[$a]["result_type"];?></td>
+                    <td><?php echo $result_type[$a]["tgl_result_type_last_modified"];?></td>
                     <td>
                         <a href = "<?php echo base_url();?>result_type/activate/<?php echo rawurlencode($result_type[$a]["result_type"]);?>" class = "btn btn-primary btn-sm col-lg-12">ACTIVATE</a>
                     </td>

@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://joshuanatan.info/maks_rb';
+$config['base_url'] = 'http://127.0.0.1:8888/project/maks/maks_rb';
 
 /*
 |--------------------------------------------------------------------------

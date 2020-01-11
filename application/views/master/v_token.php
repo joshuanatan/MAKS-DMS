@@ -27,10 +27,11 @@
         <table class = "table table-striped table-hover table-bordered" id = "table_driver" data-plugin = "dataTable">
             <thead>
                 <th style = "width:5%">#</th>
-                <th style = "width:25%">Nama Client</th>
-                <th style = "width:25%">Token token</th>
-                <th style = "width:25%">Status Token</th>
-                <th style = "width:20%">Action</th>
+                <th>Nama Client</th>
+                <th>Token token</th>
+                <th>Last Modified</th>
+                <th style = "width:15%">Status Token</th>
+                <th style = "width:15%">Action</th>
             </thead>
             <tbody>
                 <?php for($a = 0; $a<count($token); $a++):?>
@@ -38,6 +39,7 @@
                     <td><?php echo $a+1;?></td>
                     <td><?php echo $token[$a]["nama_client"];?></td>
                     <td><?php echo $token[$a]["token"];?></td>
+                    <td><?php echo $token[$a]["tgl_token_last_modified"];?></td>
                     <td>
                         <?php if($token[$a]["status_aktif_token"] == 1):?>
                         <button type = "button" class = "btn btn-primary btn-sm col-lg-12">ACTIVE</button>
@@ -70,11 +72,11 @@
                 <form action = "<?php echo base_url();?>token/insert" method = "POST">
                     <div class = "form-group">
                         <h5>Nama Client</h5>
-                        <input type = "text" class = "form-control" name = "nama_client">
+                        <input required type = "text" class = "form-control" name = "nama_client">
                     </div>
                     <div class = "form-group">
                         <h5>Token</h5>
-                        <input type = "text" class = "form-control" name = "token" value = "<?php echo $new_token;?>" readonly>
+                        <input required type = "text" class = "form-control" name = "token" value = "<?php echo $new_token;?>" readonly>
                     </div>
                     <button type = "submit" class = "btn btn-primary btn-sm">SUBMIT</button>
                 </form>
@@ -94,11 +96,11 @@
                     <input type = "hidden" name = "id_submit_token" value = "<?php echo $token[$a]["id_submit_token"];?>">
                     <div class = "form-group">
                         <h5>Nama Client</h5>
-                        <input type = "text" class = "form-control" value = "<?php echo $token[$a]["nama_client"];?>" name = "nama_client">
+                        <input required type = "text" class = "form-control" value = "<?php echo $token[$a]["nama_client"];?>" name = "nama_client">
                     </div>
                     <div class = "form-group">
                         <h5>Token</h5>
-                        <input readonly type = "text" class = "form-control" value = "<?php echo $token[$a]["token"];?>" name = "token">
+                        <input required readonly type = "text" class = "form-control" value = "<?php echo $token[$a]["token"];?>" name = "token">
                     </div>
                     <div class = "form-group">
                         <button type = "submit" class = "btn btn-primary btn-sm">SUBMIT</button>
