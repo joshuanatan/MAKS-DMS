@@ -1,0 +1,1 @@
+[06-Jan-2020 05:56:32 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/joshuana/public_html/maks_rb/system/libraries/Session/drivers/Session_files_driver.php on line 212
