@@ -1,9 +1,9 @@
 <div class="page-header">
-    <h1 class="page-title">MAPPED REQUEST INTENTION - RESULT TYPE MAPPING</h1>
+    <h1 class="page-title">RESULT TYPE MAPPING</h1>
     <br/>
     <ol class="breadcrumb breadcrumb-arrow">
         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-        <li class="breadcrumb-item">Mapped Request Intention - Result Type</li>
+        <li class="breadcrumb-item">Result Type</li>
     </ol>
 </div>
 <br/>

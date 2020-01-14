@@ -232,7 +232,7 @@ class Resultmapping extends CI_Controller{
             "status_aktif_result_type_mapping" => 2
         );
         $field = array(
-            "id_submit_result_type_mapping","mapping_key","result_type","status_aktif_result_type_mapping"
+            "id_submit_result_type_mapping","mapping_key","result_type","status_aktif_result_type_mapping","tgl_result_type_mapping_last_modified"
         );
         $result = selectRow("tbl_result_type_mapping",$where,$field);
         $data["result_list"] = $result->result_array();

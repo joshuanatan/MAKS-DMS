@@ -1,9 +1,9 @@
 <div class="page-header">
-    <h1 class="page-title">MAPPED REQUEST INTENTION - RESULT TYPE MAPPING</h1>
+    <h1 class="page-title">RESULT TYPE MAPPING</h1>
     <br/>
     <ol class="breadcrumb breadcrumb-arrow">
         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-        <li class="breadcrumb-item active">Mapped Request Intention - Result Type</li>
+        <li class="breadcrumb-item active">Result Type</li>
     </ol>
 </div>
 <br/>
@@ -42,7 +42,7 @@
                             <?php endfor;?>
                         </select>
                     </td>
-                    <td><?php echo $result_mapping[$a]["tgl_result_type_mapping_last_modified"];?></td>
+                    <td><?php echo $result_list[$a]["tgl_result_type_mapping_last_modified"];?></td>
                     <td>
                         <a href = "<?php echo base_url();?>resultmapping/activate_mapped/<?php echo $result_list[$a]["id_submit_result_type_mapping"];?>" class = "btn btn-primary btn-sm col-lg-12">ACTIVATE</a>
                     </td>
