@@ -109,7 +109,7 @@ class Resultmapping extends CI_Controller{
             "tgl_result_type_mapping_last_modified" => date("Y-m-d H:i:s")
         );
         updateRow("tbl_result_type_mapping",$data,$where);
-        $msg = "Data is successfully deactivated";
+        $msg = "Data is successfully activated";
         $this->session->set_flashdata("status_mapping","success");
         $this->session->set_flashdata("msg_mapping",$msg);
         redirect("resultmapping");
@@ -166,7 +166,7 @@ class Resultmapping extends CI_Controller{
                     "id_user_result_type_mapping_last_modified" => $this->session->id_user
                 );
                 insertRow("tbl_result_type_mapping",$data);
-                $msg = "Data is successfully added to database. Click 'Checked Mapped Result' button to review";
+                $msg = "Data is successfully added to database";
                 $this->session->set_flashdata("status_mapping","success");
                 $this->session->set_flashdata("msg_mapping",$msg);
             }

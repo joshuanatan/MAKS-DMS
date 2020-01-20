@@ -82,7 +82,7 @@
     <div class = "modal-dialog modal-center">
         <div class = "modal-content">
             <div class = "modal-header">
-                <h4>ADD RESULT TYPE</h4>
+                <h4>EDIT RESULT TYPE</h4>
             </div>
             <form action = "<?php echo base_url();?>result_type/update" method = "POST">
                 <div class = "modal-body">
