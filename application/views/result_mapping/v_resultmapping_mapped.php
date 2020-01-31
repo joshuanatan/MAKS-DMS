@@ -45,6 +45,7 @@
                     <td><?php echo nl2br($result_mapping[$a]["mapping_key"]);?></td>
                     <td>
                         <select class = "form-control" name = "result_type<?php echo $a;?>" onchange = "autoChecklist(<?php echo $a;?>)">
+                            <option value = '' selected disabled>Select Result Type</option>
                             <?php for($b = 0; $b<count($result_type); $b++):?>
                             <option value = "<?php echo $result_type[$b]["result_type"];?>"<?php if($result_type[$b]["result_type"] == $result_mapping[$a]["result_type"]) echo "selected";?>><?php echo $result_type[$b]["result_type"];?></option>
                             <?php endfor;?>
