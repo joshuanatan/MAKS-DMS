@@ -12,7 +12,11 @@
             <tr>
                 <?php for($col = 0; $col<count($data[$a]["value"]["header"]); $col++):?>
                 <?php $access_key = $data[$a]["value"]["header"][$col]["db_field"];?>
+                <?php if(array_key_exists($access_key,$data[$a]["value"]["content"][$row])):?>
                 <td><?php echo $data[$a]["value"]["content"][$row][$access_key];?></td>
+                <?php else:?>
+                <td></td>
+                <?php endif;?>
                 <?php endfor;?>
             </tr>
             <?php endfor;?>
