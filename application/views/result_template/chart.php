@@ -52,27 +52,30 @@
     $label = array();
     $result_counter = 0; 
     $label_counter = 0;
-    for($a = 0; $a<count($data); $a++){
+    for($a = 0; $a<count($data); $a++){ //ngeloop datasetnya
         
-        for($c = 0; $c<count($data[$a]["value"]["content"]); $c++){
-            for($d = 0; $d<count($data[$a]["value"]["header"]); $d++){
-                $key = $data[$a]["value"]["header"][$d]["db_field"];
-                if(is_numeric($data[$a]["value"]["content"][$c][$key])){
-                    $result[$a][$c] = $data[$a]["value"]["content"][$c][$key];
-                }
-                else{
-                    $label[$a][$c] = $data[$a]["value"]["content"][$c][$key];
+        for($c = 0; $c<count($data[$a]["value"]["content"]); $c++){ //ngeloop isinya bakal ada berapa bar di chart
+            for($d = 0; $d<count($data[$a]["value"]["header"]); $d++){ //ambil accesskey nya (harusnya cuman 2)
+                $key = $data[$a]["value"]["header"][$d]["db_field"]; //ambil bagian yang dbfield bukan alias
+                if(array_key_exists($key,$data[$a]["value"]["content"][$c])){
+                    if(is_numeric($data[$a]["value"]["content"][$c][$key])){ //kalau value-content-ke 0 dengan key dbfield = ambil value
+                        $result[$a][$c] = $data[$a]["value"]["content"][$c][$key];
+                    }
+                    else{
+                        $label[$a][$c] = $data[$a]["value"]["content"][$c][$key];
+                    }
                 }
             }
         }
     }
     ?>
     <?php for($a = 0; $a<count($data); $a++):?>
+        <?php //echo "counter a:".$a;?>
     <?php if(count($data[$a]["value"]["content"]) > 0):?>
     (function () {
         var barChartData = {
             labels: [
-                <?php 
+                <?php
                 for($b = 0; $b<count($label[$a]); $b++){
                     echo "'".$label[$a][$b]."'";
                     if($b+1 != count($label[$a])){
